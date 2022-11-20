@@ -42,14 +42,17 @@ export class App extends Component {
         name: data.name,
       number: data.number
     }
-    if (this.state.contacts.find(contac => contac.name === data.name )) {
+    const isExist = this.state.contacts.find(contac => contac.name === data.name);
+    if (isExist) {
       alert(`${data.name} is already in contact`)
-    } else {
+      return
+    } 
+
       this.setState(prevState =>({
       contacts:[...prevState.contacts,contact]
      
     }))
-    }
+    
   }
 
   handelFilterChange = e => {
